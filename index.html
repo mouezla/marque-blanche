@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marque Blanche — Clonez n'importe quelle page produit</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-logo">
+      <span class="logo-icon">🟪</span>
+      <span class="logo-text">marque blanche</span>
+    </div>
+    <a href="#pricing" class="btn btn-primary">Commencez le clonage →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="badge">✦ CONÇU POUR LES PROPRIÉTAIRES DE BOUTIQUES SHOPIFY</p>
+    <h1>Clonez n'importe quelle<br>page produit.<br><span>Appropriez-vous-la.</span></h1>
+    <p class="hero-sub">Copiez l'URL d'un concurrent. Créez une section Shopify prête à<br>l'emploi en 3 minutes. Sans designer ni code.</p>
+    <div class="hero-btns">
+      <a href="#pricing" class="btn btn-primary">Commencez le clonage →</a>
+      <a href="#how" class="btn btn-ghost">Voyez-le en action</a>
+    </div>
+
+    <!-- DEMO CARD -->
+    <div class="demo-card">
+      <div class="demo-browser-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="demo-url">competitor-store.com/products/example</span>
+      </div>
+      <div class="demo-product">
+        <div class="demo-img">
+          <div class="product-bottle orange"></div>
+        </div>
+        <div class="demo-info">
+          <p class="demo-tag">GLOW CO &nbsp; · &nbsp; JOINS DE LA PEAU</p>
+          <h3>Sérum régénérant pour cils</h3>
+          <div class="demo-stars">★★★★★ <span>4.9 · 2 184 avis</span></div>
+          <div class="demo-price"><strong>48 $</strong> <s>52 $</s></div>
+          <p class="demo-desc">Testé cliniquement. Résultats en 6 semaines. Livraison gratuite pour les commandes de plus de 40 $.</p>
+          <button class="btn-cart">Ajouter au panier</button>
+          <div class="demo-stats">
+            <div><strong>2,1 millions+</strong><br><small>Bouteilles vendues</small></div>
+            <div><strong>4,9 ★</strong><br><small>Note moyenne</small></div>
+            <div><strong>30 jours</strong><br><small>Remboursement</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-tabs">
+        <button class="tab active">Leur page</button>
+        <button class="tab">Votre page</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGOS PRESSE -->
+  <section class="press">
+    <p class="press-label">De l'équipe présentée dans :</p>
+    <div class="press-logos">
+      <span class="press-item yahoo">Yahoo<span class="y-finance">◆</span>finance</span>
+      <span class="press-item ap"><strong>AP</strong></span>
+      <span class="press-item mw">Market Watch</span>
+      <span class="press-item bi">BUSINESS INSIDER</span>
+      <span class="press-item bz">Benzinga</span>
+    </div>
+  </section>
+
+  <!-- COMMENT ÇA MARCHE -->
+  <section class="how" id="how">
+    <h2>Comment ça marche</h2>
+    <p class="section-sub">Trois étapes. Cinq minutes. Une page déployable.</p>
+    <div class="steps">
+      <div class="step-card">
+        <span class="step-num">01</span>
+        <h3>Collez le lien</h3>
+        <p>Déposez l'URL d'un concurrent et une capture d'écran. C'est tout.</p>
+        <form class="step-mockup clone-form" id="cloneForm" novalidate>
+          <label class="mock-field" for="urlInput">URL du concurrent</label>
+          <input type="url" id="urlInput" class="mock-input-real" placeholder="https://example.com/products/last-serum" required />
+          <span class="form-error" id="urlError"></span>
+
+          <label class="mock-field" for="fileInput" style="margin-top:10px;">Capture d'écran</label>
+          <label class="mock-dropzone" id="dropzone">
+            <input type="file" id="fileInput" accept="image/*" hidden />
+            <img id="thumb" class="thumb" alt="aperçu" />
+            <span id="dropText">📎 Cliquez ou glissez une image ici</span>
+          </label>
+
+          <button type="submit" class="mock-btn" id="generateBtn">Générer</button>
+
+          <div class="form-result" id="formResult"></div>
+        </form>
+      </div>
+      <div class="step-card">
+        <span class="step-num">02</span>
+        <h3>Consultez votre page</h3>
+        <p>En 90 secondes environ, nous générons un aperçu correspondant à leur mise en page, avec votre produit intégré et prêt à être expédié.</p>
+        <div class="step-mockup preview-mock">
+          <div class="mock-dots"><span></span><span></span><span></span></div>
+          <div class="preview-product">
+            <div class="product-bottle purple small"></div>
+            <div>
+              <p class="mock-label">✦ Aperçu réel</p>
+              <strong>Crème réparatrice de nuit</strong><br>
+              <span class="mock-price">36 $ <s>44 $</s></span><br>
+              <button class="mock-btn-sm">Ajouter au panier</button>
+            </div>
+          </div>
+          <div class="mock-stats-row">
+            <span>94% <small>Rachat</small></span>
+            <span>4.8★ <small>Notation</small></span>
+            <span>60 jours <small>Retours</small></span>
+          </div>
+        </div>
+      </div>
+      <div class="step-card">
+        <span class="step-num">03</span>
+        <h3>Expédier vers Shopify</h3>
+        <p>Cliquez sur Convertir. Obtenez un fichier Liquid. Intégrez-le à votre thème Shopify. Mise en ligne en quelques minutes.</p>
+        <div class="step-mockup code-mock">
+          <div class="code-block">
+            <span class="code-tag">{% section "product-page" %}</span><br>
+            <span class="code-tag">&lt;div class="wid-hero"&gt;</span><br>
+            &nbsp;&nbsp;<span class="code-var">&lt;h1&gt;</span>{{ product.title }}<span class="code-var">&lt;/h1&gt;</span><br>
+            &nbsp;&nbsp;<span class="code-var">&lt;span&gt;</span>{{ product.price | Money }}<span class="code-var">&lt;/span&gt;</span><br>
+            &nbsp;&nbsp;<span class="code-tag">&lt;button type="submit"&gt;</span> Ajouter au panier <span class="code-tag">&lt;/button&gt;</span><br>
+            <span class="code-tag">&lt;/div&gt;</span><br>
+            <span class="code-tag">{% endsection %}</span>
+          </div>
+          <div class="code-badge">✓ wid-product-page.liquid Ajouté</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIMPLICITY CTA -->
+  <section class="simplicity">
+    <h2>Oui, c'est aussi simple que ça.</h2>
+    <p>Un seul copier-coller. Un seul clic. Une seule page déployable.</p>
+    <div class="compare-imgs">
+      <div class="compare-col">
+        <p class="compare-label">● Leur page</p>
+        <div class="compare-card orange-card">
+          <div class="product-bottle orange med"></div>
+          <div>
+            <strong>Sérum régénérant pour cils</strong><br>
+            ★★★★<br>
+            <span>48 $ <s>52 $</s></span><br>
+            <small>Testé cliniquement. Résultats en 6 semaines.</small><br>
+            <button class="btn-cart sm">Ajouter au panier</button>
+            <div class="mini-stats">
+              <span>2,1 millions+<br><small>Vendu</small></span>
+              <span>4,9 ★<br><small>Notation</small></span>
+              <span>30 jours<br><small>Retours</small></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="arrow-sep">→</div>
+      <div class="compare-col">
+        <p class="compare-label">● Votre page</p>
+        <div class="compare-card purple-card">
+          <div class="product-bottle purple med"></div>
+          <div>
+            <strong>Crème réparatrice de nuit</strong><br>
+            ★★★★<br>
+            <span>36 $ <s>44 $</s></span><br>
+            <small>Fabriqué en petites quantités. Vegan.</small><br>
+            <button class="btn-cart sm purple">Ajouter au panier</button>
+            <div class="mini-stats">
+              <span>94%<br><small>Rachat</small></span>
+              <span>4.8 ★<br><small>Notation</small></span>
+              <span>60 jours<br><small>Retours</small></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="simplicity-note">Liquid ou d'embaucher un designer.</p>
+  </section>
+
+  <!-- FEATURE: TEXTE IA -->
+  <section class="feature feature-text">
+    <div class="feature-content">
+      <div class="feature-tag">RÉDACTION AUTOMATISÉE PAR DES EXPERTS</div>
+      <h2>Nous réécrivons leur texte avec votre voix.</h2>
+      <p>Chaque titre, description et puce de la page clonée a été réécrit par Pro dans un style marketing direct. Même structure éprouvée, ADN de marque différent.</p>
+      <span class="feature-badge">INTÉGRÉ À LA VERSION PRO</span>
+    </div>
+    <div class="feature-visual">
+      <div class="compare-text-card">
+        <div class="label-pill">CONCURRENT →</div>
+        <div class="label-pill your">VOTRE MARQUE</div>
+      </div>
+      <div class="text-compare">
+        <div class="text-box">
+          <p class="text-label">DESCRIPTION DU PRODUIT</p>
+          <strong>Sérum pour cils TruLash Pro</strong><br>
+          <span>59,00 $</span>
+          <p>Notre complexe d'amélioration des cils, formulé scientifiquement, utilise une technologie peptidique avancée...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE: PHOTOS IA -->
+  <section class="feature feature-photo">
+    <div class="feature-visual-photo">
+      <div class="compare-text-card">
+        <div class="label-pill">CONCURRENT →</div>
+        <div class="label-pill your">VOTRE MARQUE</div>
+      </div>
+      <div class="photo-demo">
+        <div class="product-bottle gray big"></div>
+      </div>
+    </div>
+    <div class="feature-content">
+      <div class="feature-tag">GÉNÉRATION AUTOMATISÉE DE BELLES IMAGES</div>
+      <h2>Nous recréons chaque prise de vue. Avec votre produit.</h2>
+      <p>Chaque photo de produit phare, de style de vie et d'ingrédient figurant sur la page clonée a été recréée par Pro avec votre emballage et votre marque. Même composition éprouvée, produit différent à l'image.</p>
+      <span class="feature-badge">INTÉGRÉ À LA VERSION PRO</span>
+    </div>
+  </section>
+
+  <!-- CIBLE -->
+  <section class="audience">
+    <h2>Conçu pour ceux qui le<br>construisent eux-mêmes.</h2>
+    <div class="audience-cards">
+      <div class="audience-card">
+        <span class="audience-icon">📦</span>
+        <h3>Dropshippers</h3>
+        <p>Testez 10 pages produits par semaine sans payer de designer.</p>
+      </div>
+      <div class="audience-card">
+        <span class="audience-icon">🚀</span>
+        <h3>fondateurs de DTC</h3>
+        <p>Lancez plus rapidement. Itérez sans attendre un freelance.</p>
+      </div>
+      <div class="audience-card">
+        <span class="audience-icon">👥</span>
+        <h3>petites agences</h3>
+        <p>Livrez les pages client en quelques heures, et non en quelques semaines.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2>Questions fréquentes</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Est-ce légal ? Ne suis-je pas en train de simplement copier leur page ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Non, vous vous inspirez de la structure et de la mise en page, pas du contenu. C'est comme s'inspirer d'un concurrent — une pratique courante et légale dans le commerce.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Dois-je connaître Shopify Liquid ou écrire du code ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Absolument pas. Nous générons le fichier Liquid pour vous. Il vous suffit de le glisser-déposer dans votre thème Shopify.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Et si ça casse mon thème ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Notre section s'intègre proprement et n'interfère pas avec votre thème existant. Vous pouvez toujours la supprimer en un clic.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Puis-je modifier la page après sa génération ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Oui, le fichier Liquid généré est entièrement éditable. Vous avez un contrôle total sur le résultat final.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Que se passe-t-il si le wireframe ne semble pas correct ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Contactez notre support. Nous revoyons chaque cas et ajustons le rendu si nécessaire.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          39 $/mois — où est le piège ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Il n'y en a pas. Annulation possible à tout moment. Pas d'engagement. Pas de frais cachés.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <p class="section-eyebrow">TARIFICATION</p>
+    <h2>Trois façons de cloner.</h2>
+    <p class="section-sub">Trois formules. Annulation possible à tout moment.</p>
+    <div class="plans">
+      <!-- Gratuit -->
+      <div class="plan">
+        <h3>Essai gratuit</h3>
+        <div class="plan-price"><strong>0 $</strong> <small>aucune carte requise</small></div>
+        <p class="plan-desc">Essayez de cloner avant de valider.</p>
+        <ul>
+          <li>✓ 5 aperçus (durée de vie)</li>
+          <li>✓ 5 téléchargements HTML</li>
+          <li>✓ Aperçu uniquement</li>
+          <li>✓ Aucune carte requise</li>
+        </ul>
+        <a href="#" class="btn btn-outline">Commencez gratuitement</a>
+      </div>
+      <!-- Constructeur -->
+      <div class="plan">
+        <h3>Constructeur</h3>
+        <div class="plan-price"><strong>39 $</strong> <small>par mois</small></div>
+        <p class="plan-desc">Cloner et expédier vers Shopify, en boucle.</p>
+        <ul>
+          <li>✓ 15 aperçus par mois</li>
+          <li>✓ 15 téléchargements HTML</li>
+          <li>✓ 5 téléchargements Shopify</li>
+          <li>✓ Assistance par e-mail</li>
+        </ul>
+        <a href="#" class="btn btn-primary">Commencez le clonage →</a>
+      </div>
+      <!-- Pro -->
+      <div class="plan plan-featured">
+        <div class="plan-badge">MEILLEUR RAPPORT QUALITÉ-PRIX</div>
+        <h3>Pro</h3>
+        <div class="plan-price"><strong>79 $</strong> <small>par mois</small></div>
+        <p class="plan-desc">Cloner, écrire, photographier, expédier. Terminé.</p>
+        <ul>
+          <li>✓ 25 aperçus par mois</li>
+          <li>✓ 25 téléchargements HTML</li>
+          <li>✓ 10 téléchargements Shopify</li>
+          <li>✓ Copie IA dans votre voix</li>
+          <li>✓ Photos IA pour votre marque</li>
+          <li>✓ Coffre-fort d'IA (plus de 30 outils d'IA)</li>
+        </ul>
+        <div class="plan-why">
+          <strong>POURQUOI LA VERSION PRO ?</strong>
+          <p>AI Vault vaut à lui seul plus de 40 $/mois. Les utilisateurs Pro en bénéficient gratuitement.</p>
+        </div>
+        <a href="#" class="btn btn-featured">Commencez à cloner au maximum →</a>
+      </div>
+    </div>
+    <p class="pricing-note">Facturation mensuelle. Annulation possible à tout moment. Pas encore convaincu(e) ?<br>Essayez 5 aperçus gratuits, sans carte bancaire.</p>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta-final">
+    <h2>Arrêtez de tout construire<br>à partir de zéro.</h2>
+    <p>Copiez ce qui fonctionne déjà. Appropriez-vous-le. Lancez-le dès aujourd'hui.</p>
+    <a href="#pricing" class="btn btn-white">Commencez le clonage →</a>
+    <p class="cta-note">39 $/mois. Illimité. Annulation possible à tout moment.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="nav-logo">
+      <span class="logo-icon">🟪</span>
+      <span class="logo-text">marque blanche</span>
+    </div>
+    <p>© 2024 Marque Blanche. Tous droits réservés.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
