@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marque Blanche — Clonez n'importe quelle page produit</title>
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=6" />
 </head>
 <body>
 
@@ -435,28 +435,35 @@
   <div class="modal-overlay" id="cloneModal" aria-hidden="true">
     <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <button class="modal-close" id="modalClose" aria-label="Fermer">✕</button>
-      <h3 id="modalTitle">Collez le lien</h3>
-      <p class="modal-sub">Déposez l'URL d'un concurrent (et une capture d'écran). C'est tout.</p>
+      <h2 id="modalTitle" class="cf-title">Cloner une page produit</h2>
+      <p class="modal-sub cf-sub">Indiquez l'URL d'un concurrent et une capture d'écran. Ajoutez le nom de votre produit. Nous nous occupons du reste.</p>
 
       <form class="clone-form" id="cloneForm" novalidate>
-        <label class="mock-field" for="urlInput">URL du concurrent</label>
-        <input type="url" id="urlInput" class="mock-input-real" placeholder="https://example.com/products/last-serum" required />
+        <label class="cf-label" for="urlInput">URL du concurrent <span class="req">*</span></label>
+        <input type="url" id="urlInput" class="mock-input-real cf-input" placeholder="https://competitor-store.com/products/their-product" required />
         <span class="form-error" id="urlError"></span>
 
-        <label class="mock-field" for="fileInput" style="margin-top:10px;">Capture d'écran (optionnel)</label>
-        <label class="mock-dropzone" id="dropzone">
-          <input type="file" id="fileInput" accept="image/*" hidden />
+        <label class="cf-label" for="fileInput">Capture d'écran de la page du concurrent <span class="req">*</span></label>
+        <label class="cf-dropzone" id="dropzone">
+          <input type="file" id="fileInput" accept="image/png,image/jpeg" hidden />
+          <div class="cf-drop-icon">⤒</div>
           <img id="thumb" class="thumb" alt="aperçu" />
-          <span id="dropText">📎 Cliquez ou glissez une image ici</span>
+          <span id="dropText" class="cf-drop-title">Déposez une capture d'écran ici ou cliquez pour télécharger</span>
+          <small class="cf-drop-hint">PNG ou JPG jusqu'à 20 Mo</small>
         </label>
+        <p class="cf-note">Utilisez une capture d'écran de la page produit du concurrent en pleine page. Nous recommandons <a href="https://gofullpage.com" target="_blank" rel="noopener">GoFullPage</a>, une extension gratuite pour Chrome qui capture la page entière en un clic.</p>
 
-        <button type="submit" class="mock-btn" id="generateBtn">Générer</button>
+        <label class="cf-label" for="productName">Nom de votre produit <span class="req">*</span></label>
+        <input type="text" id="productName" class="mock-input-real cf-input" placeholder="par exemple, un sérum régénérant pour les cils" required />
+
+        <button type="submit" class="mock-btn cf-submit" id="generateBtn">Générer le wireframe</button>
+        <p class="cf-time">Cela prend généralement de 1 à 3 minutes.</p>
 
         <div class="form-result" id="formResult"></div>
       </form>
     </div>
   </div>
 
-  <script src="script.js?v=5"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>

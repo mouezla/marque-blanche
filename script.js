@@ -135,10 +135,13 @@ function toggleFaq(btn) {
     urlError.textContent = '';
   });
 
+  const productNameInput = document.getElementById('productName');
+
   // --- Soumission ---
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const url = urlInput.value.trim();
+    const productName = productNameInput ? productNameInput.value.trim() : '';
 
     // Validation
     if (!isValidUrl(url)) {
@@ -146,10 +149,15 @@ function toggleFaq(btn) {
       urlError.textContent = 'Entrez une URL valide (http:// ou https://)';
       return;
     }
+    if (!productName) {
+      productNameInput.classList.add('invalid');
+      productNameInput.focus();
+      return;
+    }
 
     // Génération via le backend
     generateBtn.disabled = true;
-    generateBtn.textContent = 'Génération...';
+    generateBtn.textContent = 'Génération du wireframe...';
     result.className = 'form-result loading show';
     result.innerHTML = '<span class="spinner"></span> Analyse de la page concurrente...';
 
@@ -168,11 +176,13 @@ function toggleFaq(btn) {
           source: domain
         };
       }
+      // Le nom saisi par l'utilisateur devient le titre du wireframe
+      if (productName) data.title = productName;
       lastData = data;
       result.className = 'form-result show';
       result.innerHTML = '';
       generateBtn.disabled = false;
-      generateBtn.textContent = 'Générer';
+      generateBtn.textContent = 'Générer le wireframe';
 
       // Ferme la popup et affiche la page clonée
       if (typeof closeCloneModal === 'function') closeCloneModal();
