@@ -79,22 +79,12 @@
         <span class="step-num">01</span>
         <h3>Collez le lien</h3>
         <p>Déposez l'URL d'un concurrent et une capture d'écran. C'est tout.</p>
-        <form class="step-mockup clone-form" id="cloneForm" novalidate>
-          <label class="mock-field" for="urlInput">URL du concurrent</label>
-          <input type="url" id="urlInput" class="mock-input-real" placeholder="https://example.com/products/last-serum" required />
-          <span class="form-error" id="urlError"></span>
-
-          <label class="mock-field" for="fileInput" style="margin-top:10px;">Capture d'écran</label>
-          <label class="mock-dropzone" id="dropzone">
-            <input type="file" id="fileInput" accept="image/*" hidden />
-            <img id="thumb" class="thumb" alt="aperçu" />
-            <span id="dropText">📎 Cliquez ou glissez une image ici</span>
-          </label>
-
-          <button type="submit" class="mock-btn" id="generateBtn">Générer</button>
-
-          <div class="form-result" id="formResult"></div>
-        </form>
+        <div class="step-mockup">
+          <div class="mock-field">URL du concurrent</div>
+          <div class="mock-input">https://example.com/products/last-serum</div>
+          <div class="mock-file">📎 Capture d'écran<br><small>✓ page-concurrent.png</small></div>
+          <button type="button" class="mock-btn js-open-modal">Coller le lien</button>
+        </div>
       </div>
       <div class="step-card">
         <span class="step-num">02</span>
@@ -382,6 +372,32 @@
     </div>
     <p>© 2024 Marque Blanche. Tous droits réservés.</p>
   </footer>
+
+  <!-- MODALE : Coller le lien -->
+  <div class="modal-overlay" id="cloneModal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Fermer">✕</button>
+      <h3 id="modalTitle">Collez le lien</h3>
+      <p class="modal-sub">Déposez l'URL d'un concurrent (et une capture d'écran). C'est tout.</p>
+
+      <form class="clone-form" id="cloneForm" novalidate>
+        <label class="mock-field" for="urlInput">URL du concurrent</label>
+        <input type="url" id="urlInput" class="mock-input-real" placeholder="https://example.com/products/last-serum" required />
+        <span class="form-error" id="urlError"></span>
+
+        <label class="mock-field" for="fileInput" style="margin-top:10px;">Capture d'écran (optionnel)</label>
+        <label class="mock-dropzone" id="dropzone">
+          <input type="file" id="fileInput" accept="image/*" hidden />
+          <img id="thumb" class="thumb" alt="aperçu" />
+          <span id="dropText">📎 Cliquez ou glissez une image ici</span>
+        </label>
+
+        <button type="submit" class="mock-btn" id="generateBtn">Générer</button>
+
+        <div class="form-result" id="formResult"></div>
+      </form>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

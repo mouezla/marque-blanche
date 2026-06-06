@@ -1,4 +1,44 @@
 // ===========================
+// MODALE (popup formulaire)
+// ===========================
+function openCloneModal() {
+  const modal = document.getElementById('cloneModal');
+  if (!modal) return;
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+  const urlField = document.getElementById('urlInput');
+  if (urlField) setTimeout(() => urlField.focus(), 200);
+}
+
+function closeCloneModal() {
+  const modal = document.getElementById('cloneModal');
+  if (!modal) return;
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Bouton "Coller le lien" dans l'étape 01
+  document.querySelectorAll('.js-open-modal').forEach(btn =>
+    btn.addEventListener('click', openCloneModal)
+  );
+  // Fermeture : croix
+  const closeBtn = document.getElementById('modalClose');
+  if (closeBtn) closeBtn.addEventListener('click', closeCloneModal);
+  // Fermeture : clic sur le fond
+  const overlay = document.getElementById('cloneModal');
+  if (overlay) overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeCloneModal();
+  });
+  // Fermeture : touche Échap
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeCloneModal();
+  });
+});
+
+// ===========================
 // FAQ ACCORDION
 // ===========================
 function toggleFaq(btn) {
@@ -284,19 +324,16 @@ document.querySelectorAll('.tab').forEach(tab => {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     const href = this.getAttribute('href');
+    // Les liens vers le formulaire ouvrent la popup
+    if (href === '#cloneForm') {
+      e.preventDefault();
+      openCloneModal();
+      return;
+    }
     const target = document.querySelector(href);
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      // Place le curseur dans le champ URL si on va vers le formulaire
-      if (href === '#cloneForm') {
-        const urlField = document.getElementById('urlInput');
-        if (urlField) {
-          urlField.classList.add('highlight');
-          setTimeout(() => urlField.focus({ preventScroll: true }), 600);
-          setTimeout(() => urlField.classList.remove('highlight'), 2000);
-        }
-      }
     }
   });
 });
