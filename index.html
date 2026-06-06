@@ -17,6 +17,37 @@
     <a href="#cloneForm" class="btn btn-primary">Commencez le clonage →</a>
   </nav>
 
+  <!-- RÉSULTAT DU CLONAGE -->
+  <section class="clone-result hidden" id="cloneResult">
+    <div class="result-topbar">
+      <div class="result-meta">
+        <strong id="resultSlug">produit</strong>
+        <span class="result-dot">·</span>
+        <span>Généré à l'instant</span>
+        <span class="result-badge">Gratuit</span>
+      </div>
+      <button type="button" class="result-again" id="resultAgain">↻ Générez un autre</button>
+    </div>
+
+    <div class="result-head">
+      <h2>Votre page</h2>
+      <p class="section-sub">Aperçu de la mise en page clonée</p>
+    </div>
+
+    <div class="result-window">
+      <div class="result-chrome">
+        <span class="chrome-dots"><i></i><i></i><i></i></span>
+        <span class="chrome-url" id="resultUrl">aperçu de votre page</span>
+        <div class="chrome-actions">
+          <button type="button" id="dlHtml">⬇ Télécharger HTML</button>
+          <button type="button" id="dlLiquid">⬇ Télécharger .liquid</button>
+          <button type="button" id="openTab">Ouvrir dans un nouvel onglet ↗</button>
+        </div>
+      </div>
+      <iframe id="previewFrame" class="result-frame" title="Aperçu de la page clonée"></iframe>
+    </div>
+  </section>
+
   <!-- HERO -->
   <section class="hero">
     <p class="badge">✦ CONÇU POUR LES PROPRIÉTAIRES DE BOUTIQUES SHOPIFY</p>
