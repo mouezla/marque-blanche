@@ -26,6 +26,15 @@ HEADERS = {
 }
 
 
+@app.after_request
+def no_cache(response):
+    """Empêche le navigateur de garder en cache HTML/JS/CSS."""
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
+
+
 def meta(soup, prop=None, name=None):
     """Récupère le contenu d'une balise meta (og: ou name)."""
     if prop:
