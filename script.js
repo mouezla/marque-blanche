@@ -287,6 +287,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Place le curseur dans le champ URL si on va vers le formulaire
+      if (this.getAttribute('href') === '#how') {
+        const urlField = document.getElementById('urlInput');
+        if (urlField) setTimeout(() => urlField.focus({ preventScroll: true }), 600);
+      }
     }
   });
 });
