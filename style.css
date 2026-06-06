@@ -219,6 +219,15 @@ ul { list-style: none; padding: 0; }
 }
 .mock-input-real:focus { border-color: #6C63FF; }
 .mock-input-real.invalid { border-color: #e74c3c; }
+.mock-input-real.highlight {
+  border-color: #6C63FF;
+  box-shadow: 0 0 0 4px rgba(108,99,255,.25);
+  animation: pulseField .6s ease 2;
+}
+@keyframes pulseField {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(108,99,255,.25); }
+  50% { box-shadow: 0 0 0 8px rgba(108,99,255,.12); }
+}
 .form-error { color: #e74c3c; font-size: 11px; min-height: 14px; margin-top: 2px; }
 .mock-dropzone {
   display: flex;

@@ -283,14 +283,19 @@ document.querySelectorAll('.tab').forEach(tab => {
 // ===========================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
+    const href = this.getAttribute('href');
+    const target = document.querySelector(href);
     if (target) {
       e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
       // Place le curseur dans le champ URL si on va vers le formulaire
-      if (this.getAttribute('href') === '#how') {
+      if (href === '#cloneForm') {
         const urlField = document.getElementById('urlInput');
-        if (urlField) setTimeout(() => urlField.focus({ preventScroll: true }), 600);
+        if (urlField) {
+          urlField.classList.add('highlight');
+          setTimeout(() => urlField.focus({ preventScroll: true }), 600);
+          setTimeout(() => urlField.classList.remove('highlight'), 2000);
+        }
       }
     }
   });
