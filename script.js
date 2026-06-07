@@ -427,8 +427,16 @@ function buildPreviewHtml(data, url) {
   .foot-bottom { max-width:980px; margin:30px auto 0; display:flex; justify-content:space-between; align-items:center; font-size:12px; }
   .sk-pay { background:#2a2a2a; color:#888; font-size:10px; padding:6px 8px; border-radius:4px; margin-left:6px; }
   @media(max-width:760px){ .sk-hero,.foot{grid-template-columns:1fr;} }
+  .sk-bar { background:#111; color:#fff; text-align:center; font-size:13px; padding:10px; letter-spacing:.5px; }
+  .sk-reviews { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .sk-rev { border:1px solid #eee; border-radius:12px; padding:20px; }
+  .sk-rev .sk-rating{margin-bottom:8px;}
+  .sk-guarantee { background:#faf9ff; border:1px dashed #d9d6ea; border-radius:14px; text-align:center; padding:34px; }
+  .sk-trust { display:flex; justify-content:center; gap:30px; flex-wrap:wrap; color:#9aa; font-size:13px; padding:18px 0; }
 </style></head>
 <body>
+  <div class="sk-bar">[ Barre promo — livraison offerte dès X $ · garantie 30 jours ]</div>
+
   <div class="wrap sk-hero">
     <div>${imgBlock}</div>
     <div>
@@ -438,6 +446,7 @@ function buildPreviewHtml(data, url) {
       <div class="sk-price">${price}</div>
       <div class="sk-line"></div><div class="sk-line w80"></div><div class="sk-line w60"></div>
       <button class="sk-cta" style="margin-top:20px;">[ CTA — ADD TO CART ]</button>
+      <div class="sk-trust"><span>✓ [ Paiement sécurisé ]</span><span>✓ [ Livraison rapide ]</span><span>✓ [ Satisfait ou remboursé ]</span></div>
     </div>
   </div>
 
@@ -446,6 +455,23 @@ function buildPreviewHtml(data, url) {
     <div class="sk-faq"><span>[ Bénéfice 1 — ~6-10 words ]</span><b>✓</b></div>
     <div class="sk-faq"><span>[ Bénéfice 2 — ~6-10 words ]</span><b>✓</b></div>
     <div class="sk-faq"><span>[ Bénéfice 3 — ~6-10 words ]</span><b>✓</b></div>
+  </div>
+
+  <div class="wrap sk-section">
+    <h2 class="sk-h2">[ Avis clients ]</h2>
+    <div class="sk-reviews">
+      <div class="sk-rev"><div class="sk-rating">★★★★★</div><div class="sk-line"></div><div class="sk-line w80"></div><p style="margin-top:10px;font-size:13px;color:#888;">— [ Client 1 ]</p></div>
+      <div class="sk-rev"><div class="sk-rating">★★★★★</div><div class="sk-line"></div><div class="sk-line w60"></div><p style="margin-top:10px;font-size:13px;color:#888;">— [ Client 2 ]</p></div>
+      <div class="sk-rev"><div class="sk-rating">★★★★★</div><div class="sk-line"></div><div class="sk-line w80"></div><p style="margin-top:10px;font-size:13px;color:#888;">— [ Client 3 ]</p></div>
+    </div>
+  </div>
+
+  <div class="wrap sk-section">
+    <div class="sk-guarantee">
+      <h2 class="sk-h2" style="margin-bottom:10px;">[ Garantie — 30 jours satisfait ou remboursé ]</h2>
+      <div class="sk-line" style="max-width:420px;margin:8px auto;"></div>
+      <div class="sk-line w60" style="max-width:280px;margin:8px auto;"></div>
+    </div>
   </div>
 
   <div class="wrap sk-section">
