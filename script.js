@@ -382,6 +382,43 @@ function buildPreviewHtml(data, url) {
     ? `<img src="${img}" alt="${title}" style="width:100%;border-radius:14px;object-fit:cover;">`
     : `<div class="ph-img"></div>`;
 
+  // Images et titres réellement extraits de la page source
+  const gallery = Array.isArray(data.images) ? data.images.slice(0, 10) : (img ? [img] : []);
+  const headings = Array.isArray(data.headings) ? data.headings.slice(0, 10) : [];
+
+  // Reconstruit les sections de la page source dans l'ordre,
+  // en alternant texte (placeholder) et images réelles.
+  let dynamicSections = '';
+  if (headings.length) {
+    let gi = 1; // l'image 0 sert au hero
+    headings.forEach((h, idx) => {
+      // On reprend la STRUCTURE (nb de mots) mais en placeholder à réécrire à votre image
+      const wordCount = String(h).trim().split(/\s+/).length;
+      const placeholder = `[ Titre section ${idx + 1} — ~${wordCount} mots à réécrire ]`;
+      const pic = gallery[gi] ? `<div class="sk-secimg"><img src="${gallery[gi]}" alt=""></div>` : '';
+      if (pic) gi++;
+      const left = (idx % 2 === 0);
+      dynamicSections += `
+      <div class="wrap sk-section">
+        <div class="sk-block ${left ? '' : 'rev'}">
+          <div class="sk-block-txt">
+            <h2 class="sk-h2" style="text-align:left;">${placeholder}</h2>
+            <div class="sk-line"></div><div class="sk-line w80"></div><div class="sk-line w60"></div>
+          </div>
+          ${pic || '<div class="sk-secimg"><div class="ph-img" style="aspect-ratio:16/10;"></div></div>'}
+        </div>
+      </div>`;
+    });
+  } else {
+    dynamicSections = `
+      <div class="wrap sk-section">
+        <h2 class="sk-h2">[ Section — Bénéfices produit ]</h2>
+        <div class="sk-faq"><span>[ Bénéfice 1 — ~6-10 words ]</span><b>✓</b></div>
+        <div class="sk-faq"><span>[ Bénéfice 2 — ~6-10 words ]</span><b>✓</b></div>
+        <div class="sk-faq"><span>[ Bénéfice 3 — ~6-10 words ]</span><b>✓</b></div>
+      </div>`;
+  }
+
   // Accordéon FAQ : 10 questions à compléter
   const faqTopics = [
     'how to use the product', 'how long until results', 'is it safe',
@@ -432,6 +469,11 @@ function buildPreviewHtml(data, url) {
   .sk-rev { border:1px solid #eee; border-radius:12px; padding:20px; }
   .sk-rev .sk-rating{margin-bottom:8px;}
   .sk-guarantee { background:#faf9ff; border:1px dashed #d9d6ea; border-radius:14px; text-align:center; padding:34px; }
+  .sk-block { display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center; }
+  .sk-block.rev .sk-block-txt { order:2; }
+  .sk-secimg img { width:100%; border-radius:14px; object-fit:cover; display:block; }
+  .sk-block .ph-img { aspect-ratio:16/10; }
+  @media(max-width:760px){ .sk-block{grid-template-columns:1fr;} .sk-block.rev .sk-block-txt{order:0;} }
   .sk-trust { display:flex; justify-content:center; gap:30px; flex-wrap:wrap; color:#9aa; font-size:13px; padding:18px 0; }
 </style></head>
 <body>
@@ -450,12 +492,7 @@ function buildPreviewHtml(data, url) {
     </div>
   </div>
 
-  <div class="wrap sk-section">
-    <h2 class="sk-h2">[ Section — Bénéfices produit ]</h2>
-    <div class="sk-faq"><span>[ Bénéfice 1 — ~6-10 words ]</span><b>✓</b></div>
-    <div class="sk-faq"><span>[ Bénéfice 2 — ~6-10 words ]</span><b>✓</b></div>
-    <div class="sk-faq"><span>[ Bénéfice 3 — ~6-10 words ]</span><b>✓</b></div>
-  </div>
+  ${dynamicSections}
 
   <div class="wrap sk-section">
     <h2 class="sk-h2">[ Avis clients ]</h2>

@@ -94,11 +94,57 @@ def analyze():
     image = meta(soup, prop="og:image") or ""
     price = find_price(soup, resp.text) or "N/A"
 
+    # --- Galerie d'images (structure visuelle de la page) ---
+    images = []
+    if image:
+        images.append(image)
+    for tag in soup.find_all("img"):
+        src = tag.get("src") or tag.get("data-src") or ""
+        if not src:
+            continue
+        if src.startswith("//"):
+            src = "https:" + src
+        elif src.startswith("/"):
+            base = re.match(r"^https?://[^/]+", url)
+            src = (base.group(0) if base else "") + src
+        # On garde les images produit plausibles
+        if not src.startswith("http"):
+            continue
+        if any(x in src.lower() for x in ["sprite", "icon", "logo", "pixel", "blank", ".svg"]):
+            continue
+        if src not in images:
+            images.append(src)
+        if len(images) >= 10:
+            break
+
+    # --- Titres de sections (ordre de la page) ---
+    NOISE = (
+        "cart", "panier", "estimated", "total", "country", "region", "currency",
+        "menu", "search", "recherche", "login", "connexion", "account", "compte",
+        "newsletter", "subscribe", "footer", "skip to", "aller au", "language",
+        "checkout", "shipping calculated", "your cart",
+    )
+    headings = []
+    for h in soup.find_all(["h2", "h3"]):
+        txt = h.get_text(" ", strip=True)
+        low = txt.lower()
+        if not (3 <= len(txt) <= 80):
+            continue
+        if any(n in low for n in NOISE):
+            continue
+        if low in [x.lower() for x in headings]:
+            continue
+        headings.append(txt)
+        if len(headings) >= 12:
+            break
+
     return jsonify({
         "ok": True,
         "title": title,
         "price": price,
         "image": image,
+        "images": images,
+        "headings": headings,
         "description": description[:300],
         "source": re.sub(r"^https?://", "", url).split("/")[0],
     })
